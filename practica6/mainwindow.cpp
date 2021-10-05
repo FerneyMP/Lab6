@@ -7,6 +7,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     setup_scene();
+
+    //Planetas->escribir_txt("Simulacion", values);
 }
 
 MainWindow::~MainWindow()
@@ -14,13 +16,14 @@ MainWindow::~MainWindow()
     delete ui;
     delete scene;
     delete Timer;
+    delete Planetas;
 }
 
 void MainWindow::setup_scene()
 {
     scene = new QGraphicsScene;
     Timer = new QTimer;
-    //planeta_ = new planeta;
+    Planetas = new planeta;
 
     //botones inicar y parar, apagados por defecto
     ui->iniciar->setEnabled(false);
@@ -32,6 +35,7 @@ void MainWindow::setup_scene()
     scene->setSceneRect(0,0,ui->graphicsView->width()-2, ui->graphicsView->height()-2);
 
     ui->graphicsView->setScene(scene);
+
 }
 
 void MainWindow::simulacion()
@@ -59,11 +63,22 @@ void MainWindow::on_AgregarDatos_clicked()
 {
     //Función para recibir todos los datos
     Masa = ui->Masa->value();
+    //values.push_back(Masa);
+
     Radio = ui->Radio->value();
+    //values.push_back(Radio);
+
     Xo = ui->Xo->value();
+    //values.push_back(Xo);
+
     Yo = ui->Yo->value();
+    //values.push_back(Yo);
+
     VoX = ui->VoX->value();
+    //values.push_back(VoX);
+
     VoY = ui->VoY->value();
+    //values.push_back(VoY);
 
     ui->iniciar->setEnabled(true); //inicia la simulación
     ui->AgregarDatos->setEnabled(false); //se desactiva la opción agregar datos

@@ -5,7 +5,7 @@
 #include <QGraphicsScene>
 #include "planeta.h"
 #include <QTimer>
-
+#include <vector>
 
 
 QT_BEGIN_NAMESPACE
@@ -25,10 +25,13 @@ private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
     QTimer *Timer;
+    planeta *Planetas;
     float Xo,VoX,Yo,VoY,Radio,Masa;
     float G = 1;
     int T = 1; //Periodo en milisegundos
     unsigned long long n = 0;
+
+    vector<int> values;
 
 private slots:
     void simulacion();
