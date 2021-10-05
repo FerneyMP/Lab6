@@ -16,13 +16,14 @@ void planeta::escribir_txt(string nombre, vector<int> valores)
 {
 
     fstream text (nombre, fstream::out);
-    string estructura = "Masa       Radio      PosInicialX    PosInicialY     VelInicialX      VelInicialY\n";
-    string tabulador  = "    ";
+    string estructura = "Masa       Radio        PosIniX      PosIniY       VelIniX       VelIniY\n";
+    string tabulador  = "       ";
+    text << estructura;
     for(vector<int>::iterator i=valores.begin(); i<valores.end(); i++){
-        //valores.at(i);
-        text >> *i;
-        text >> tabulador;
+        text << *i;
+        text << "    " << tabulador;
     }
+    text << "\n";
     valores.clear();
     text.close();
 }
