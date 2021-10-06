@@ -2,7 +2,10 @@
 
 planeta::planeta()
 {
-
+    QPixmap j(":/new/prefix1/resource/saturno.jpg");
+    //h = heigth;
+    //w = width;
+    setPixmap(j.scaled(w,h));
 }
 
 void planeta::crear_txt(string name)

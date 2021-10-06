@@ -15,7 +15,9 @@ public:
     planeta();
     void crear_txt(string name);
     void escribir_txt(string nombre, vector<int> valores);
+
 private:
+    int w,h;
 
 };
 

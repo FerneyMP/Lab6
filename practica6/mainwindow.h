@@ -6,6 +6,7 @@
 #include "planeta.h"
 #include <QTimer>
 #include <vector>
+#include <math.h>
 
 
 QT_BEGIN_NAMESPACE
@@ -30,6 +31,7 @@ private:
     float G = 1;
     int T = 1; //Periodo en milisegundos
     unsigned long long n = 0;
+    int contador_planetas = 0;
 
     vector<int> values;
 
