@@ -1,9 +1,14 @@
 #include "planeta.h"
+//Xo,Yo, VoX, VoY,Masa, Radio
 
-planeta::planeta(float Masa,float Radio, float Xo,float Yo,float VoX, float VoY)
+planeta::planeta(float Xo, float Yo, float VoX, float VoY, float Masa, float Radio, int width, int height)
 {
+    w=width;
+    h=height;
+
     QPixmap j(":/new/prefix1/resource/p.jpg");
     setPixmap(j.scaled(w,h));
+
     x=Xo;
     y= Yo;
     vx= VoX;
@@ -34,7 +39,6 @@ void planeta::escribir_txt(string nombre, vector<float> valores)
     valores.clear();
     text.close();
 }
-
                          //Ecuaciones necesarias para el generar la simulación
 
 void planeta::cinematica() //cinematica
@@ -50,9 +54,11 @@ void planeta::dinamica(QList <planeta *> planet, int a) //aceleraciones
     ax=0, ay=0;
     for (int i=0; i<planet.size(); i++){
         if (i!=a){
-            r=sqrt(pow((x2-x),2)+pow((y2-y),2)); //distancia entre dos puntos
-            ax = G*((m*(x2-x))/pow(r,3));
-            ay = G*((m*(y2-y))/pow(r,3));
+            r=sqrt(pow((planet [i]->x-x),2)+pow((planet [i]->y-y),2)); //distancia entre dos puntos
+            ax += G*((planet [i]->m * (planet [i]->x-x))/pow(r,3));
+            ay += G*((planet [i]->m *(planet [i]->y-y))/pow(r,3));
         }
     }
 }
+
+

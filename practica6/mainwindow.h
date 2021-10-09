@@ -34,7 +34,7 @@ private:
     float Xo,VoX,Yo,VoY,Radio,Masa,NumPlanet;
     float G = 1;
 
-    int T = 1; //Periodo en milisegundos
+    float T = 1; //Periodo en milisegundos
     unsigned long long n = 0;
 
     vector<float> values;
@@ -45,9 +45,15 @@ private slots:
     void on_iniciar_clicked();
     void on_parar_clicked();
 
-    /*float sum_masas();
-    float posi_posk_x();
-    float posi_posk_y();*/
-
 };
 #endif // MAINWINDOW_H
+
+
+/*NO
+
+float sum_masas();
+float posi_posk_x();
+float posi_posk_y();*/
+
+// float get_x(QList<planeta *> planet);
+ //float get_y(QList<planeta *> planet);

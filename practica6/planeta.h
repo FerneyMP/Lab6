@@ -14,16 +14,18 @@ class planeta : public QObject, public QGraphicsPixmapItem
 {
 
 public:
-    planeta(float Masa,float Radio, float Xo,float Yo,float VoX, float VoY);
+    planeta(float Xo,float Yo,float VoX, float VoY, float Masa,float Radio, int width, int height);
     void cinematica();
     void dinamica(QList <planeta *> planet , int a);
 
     void crear_txt(string name);
     void escribir_txt(string nombre, vector<float> valores);
 
+     float x,y,vx,vy,ax,ay,r,m, T;
+
 private:
     int w,h,G=1;
-    float x,y,vx,vy,ax,ay,r,m, T;
+
 
 };
 
