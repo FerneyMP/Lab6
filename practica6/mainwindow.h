@@ -23,6 +23,8 @@ public:
 
     void setup_scene();
     int contador_L=0;
+    double cont=1;
+    bool bandera=true;
 
 private:   
     Ui::MainWindow *ui;

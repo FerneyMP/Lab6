@@ -39,19 +39,17 @@ void MainWindow::setup_scene()
 
 void MainWindow::simulacion()
 {
-    float posicionX= Planetas->x, posicionY= Planetas->y;
-
-    //float float_x= get_x(lista_planetas), float_y= get_y(lista_planetas);
+    //float posicionX= Planetas->x, posicionY= Planetas->y;
 
     for (int i =0; i<lista_planetas.size();i++){
         lista_planetas[i]->dinamica(lista_planetas,i);
         lista_planetas[i]->cinematica();
 
-        //actualizar interfaz?
-        Planetas->setPos(int (posicionX),int (posicionY)); //posicionar ecuaciones
+        Planetas->setPos(float (Planetas->x),float (Planetas->y)); //posicionar ecuaciones
         n++;
 
     }
+
 }
 
 
@@ -59,8 +57,22 @@ void MainWindow::on_AgregarDatos_clicked()  //Función para recibir todos los da
 {
     NumPlanet = ui->numero_planetas->value();
     ui->iniciar->setEnabled(true); //inicia la simulación
-    ui->AgregarDatos->setEnabled(false); //se desactiva la opción agregar datos
+    ui->AgregarDatos->setEnabled(true); //se desactiva la opción agregar datos
     ui->numero_planetas->setEnabled(false);
+
+    if (cont==NumPlanet) {
+        ui->iniciar->setEnabled(true);
+        ui->parar->setEnabled(true);
+        ui->AgregarDatos->setEnabled(false);
+        ui->Masa->setEnabled(false);
+        ui->Radio->setEnabled(false);
+        ui->VoX->setEnabled(false);
+        ui->VoY->setEnabled(false);
+        ui->Xo->setEnabled(false);
+        ui->Yo->setEnabled(false);
+
+    }
+    cont++;
 
     Xo = ui->Xo->value();
     values.push_back(Xo);
@@ -80,7 +92,7 @@ void MainWindow::on_AgregarDatos_clicked()  //Función para recibir todos los da
     Radio = ui->Radio->value();
     values.push_back(Radio);
 
-    Planetas = new planeta(Xo,Yo, VoX, VoY,Masa, Radio,50,50);
+    Planetas = new planeta(Xo,Yo, VoX, VoY,Masa, Radio,30,30);
     lista_planetas.push_back(Planetas);
     contador_L++;
 
@@ -104,7 +116,8 @@ void MainWindow::on_parar_clicked()
 {
     ui->parar->setEnabled(false);
     //Agregar una nueva simulación
-    ui->AgregarDatos->setEnabled(true);
+    ui->AgregarDatos->setEnabled(false);
+
     Timer->stop();
     //scene->removeItem(Planetas);
     n=0;
@@ -144,6 +157,7 @@ float MainWindow::posi_posk_y()
 }
 
 
+    //float float_x= get_x(lista_planetas), float_y= get_y(lista_planetas);
 
 float MainWindow::get_x(QList<planeta *> planet)
 {
